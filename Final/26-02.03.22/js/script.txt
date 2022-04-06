@@ -1,0 +1,91 @@
+$(document).ready( function(){
+var arrBrand = ["Asus", "HTC", "Nokia", "iPhone", "Samsung"];
+
+// Popup | Modul
+function mehsulElaveEtme(ad, qiymet, ram, img) {
+    this.model = ad;
+    this.price = qiymet;
+    this.ram = ram;
+    this.img = img
+}
+
+var arrModelNames = ["Apple iPhone 12 Pro Max", "Apple iPhone 12", "Apple iPhone 13 Pro Max", "Apple iPhone 11 Pro Max"];
+var arrPrice = [2450, 3000, 2500, 2150];
+var arrModelRAM = ["4GB", "6GB", "6GB", "2GB"];
+var arrImg = ["iphone-1.jpg", "iphone-2.jpg", "iphone-3.jpg", "iphone-4.jpg"];
+var arrItems = [];
+
+for(var i=0; i<arrModelNames.length; i++){
+    arrItems.push(new mehsulElaveEtme(arrModelNames[i],arrPrice[i],arrModelRAM[i],arrImg[i]));
+}
+console.log(arrItems);
+
+// li-lerin yaradilmasi ve filtering-i
+var item = document.querySelectorAll(".category .item");
+var stock = document.querySelector(".stock");
+
+for (var i = 0; i < 4; i++) {
+    var col3 = document.createElement("div");
+    col3.classList.add("col-3");
+    var stockItems = document.createElement("div");
+    stockItems.classList.add("stock-items");
+    var img = document.createElement("img");
+    // li-nin metni ile sekli secmek
+    img.src = `img/iphone-${i+1}.jpg`;
+    var p = document.createElement("p");
+    p.innerText = arrItems[i].model;
+    var span = document.createElement("span");
+    span.innerText = arrItems[i].price + "AZN";
+    // appendChild
+    stockItems.appendChild(img);
+    stockItems.appendChild(p);
+    stockItems.appendChild(span);
+    col3.appendChild(stockItems);
+    stock.appendChild(col3);
+}
+
+var stock_div = document.querySelectorAll(".stock .col-3");
+
+for (var i = 0; i < item.length; i++) {
+    item[i].addEventListener("click", function () {
+        for (var i = 0; i < stock_div.length; i++) {
+            stock.children[0].remove();
+        }
+        // li-nin metnini goturmek ve lowerCase etmek
+        var content = String(this.innerText);
+        content = content.toLowerCase();
+        // mehsul div-lerinin yaradilmasi
+        for (var i = 0; i < 4; i++) {
+            var col3 = document.createElement("div");
+            col3.classList.add("col-3");
+            var stockItems = document.createElement("div");
+            stockItems.classList.add("stock-items");
+            var img = document.createElement("img");
+            // li-nin metni ile sekli secmek
+            img.src = `img/${content}.jpg`;
+            var p = document.createElement("p");
+            p.innerText = "Lorem ipsum";
+            // appendChild
+            stockItems.appendChild(img);
+            stockItems.appendChild(p);
+            col3.appendChild(stockItems);
+            stock.appendChild(col3);
+        }
+    });
+}
+
+$(".stock .col-3").click(function(){
+    $(".row1").fadeIn().css("display", "flex");
+    // console.log($(this).index());
+    $(".popup img").attr("src", `img/${arrItems[$(this).index()].img}`);
+    $(".popup p").eq(0).html(`Model: <span>${arrItems[$(this).index()].model}</span>`);
+    $(".popup p").eq(1).html(`Qiymeti: <span>${arrItems[$(this).index()].price}AZN</span>`);
+});
+
+$(".fa-xmark").click(function(){
+    $(".row1").fadeOut();
+});
+
+
+});
+

@@ -1,0 +1,96 @@
+
+.leader {
+  margin-left: 50px; }
+
+/* body {
+  
+   } */
+
+.nav {
+  background-color: black;
+  display: flex;
+  height:50px; 
+   
+}
+  .nav a {
+    font-size: 18px;
+    box-sizing: border-box;
+    color: white;
+    text-decoration: none;
+    padding: 7px;
+    border: 2px solid black;
+    transition: all 1s;
+   }
+  .nav input {
+    float: right; }
+
+a:hover {
+  background-color: #252323; }
+
+.article {
+  background-color: antiquewhite;
+float: right;
+text-align: center;
+}
+#ig{
+  text-align: center;
+  margin: 143px;
+  color: white;
+  
+  
+}
+.main{
+  height: 300px;
+}
+.aside{
+  float: left;
+  margin: 0px;
+  
+}
+.aside .lorem li{
+height: 26.9px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+border-bottom:#39393b 1px solid;
+margin-bottom: 20.9px;
+}
+.lorem{
+  background-color: rgb(252, 244, 235);
+  margin: 0px;
+  padding:9px;
+}
+#cate{
+  background-color: rgb(168, 58, 58);
+  padding: 9px;
+  margin: 0px;
+}
+.product .product-items span{
+display: block;
+text-align: center;
+
+}
+.sometext{
+  text-align: center;
+  margin: auto;
+}
+.image{
+  width: 280px;
+  height: 280px;
+}
+/* .product .product-items p::before{
+  
+} */
+/* .padding{
+  padding: 20px;
+
+} */
+/* img{
+  width: 250px;
+} */
+ /* #lorem p{
+ transition: all 1s; 
+} 
+#lorem p:hover{
+  background-color: rgb(160, 156, 156);
+} */
+
+/*# sourceMappingURL=Elmir.css.map */

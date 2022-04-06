@@ -1,0 +1,161 @@
+.col-1 {
+  width: 8.3333333333%; }
+
+.col-2 {
+  width: 16.6666666667%; }
+
+.col-3 {
+  width: 25%; }
+
+.col-4 {
+  width: 33.3333333333%; }
+
+.col-5 {
+  width: 41.6666666667%; }
+
+.col-6 {
+  width: 50%; }
+
+.col-7 {
+  width: 58.3333333333%; }
+
+.col-8 {
+  width: 66.6666666667%; }
+
+.col-9 {
+  width: 75%; }
+
+.col-10 {
+  width: 83.3333333333%; }
+
+.col-11 {
+  width: 91.6666666667%; }
+
+.col-12 {
+  width: 100%; }
+
+.col-t-1 {
+  width: 8.3333333333%; }
+
+.col-t-2 {
+  width: 16.6666666667%; }
+
+.col-t-3 {
+  width: 25%; }
+
+.col-t-4 {
+  width: 33.3333333333%; }
+
+.col-t-5 {
+  width: 41.6666666667%; }
+
+.col-t-6 {
+  width: 50%; }
+
+.col-t-7 {
+  width: 58.3333333333%; }
+
+.col-t-8 {
+  width: 66.6666666667%; }
+
+.col-t-9 {
+  width: 75%; }
+
+.col-t-10 {
+  width: 83.3333333333%; }
+
+.col-t-11 {
+  width: 91.6666666667%; }
+
+.col-t-12 {
+  width: 100%; }
+
+.col-m-1 {
+  width: 8.3333333333%; }
+
+.col-m-2 {
+  width: 16.6666666667%; }
+
+.col-m-3 {
+  width: 25%; }
+
+.col-m-4 {
+  width: 33.3333333333%; }
+
+.col-m-5 {
+  width: 41.6666666667%; }
+
+.col-m-6 {
+  width: 50%; }
+
+.col-m-7 {
+  width: 58.3333333333%; }
+
+.col-m-8 {
+  width: 66.6666666667%; }
+
+.col-m-9 {
+  width: 75%; }
+
+.col-m-10 {
+  width: 83.3333333333%; }
+
+.col-m-11 {
+  width: 91.6666666667%; }
+
+.col-m-12 {
+  width: 100%; }
+
+* {
+  box-sizing: border-box; }
+
+[class*="col-"] {
+  float: left; }
+
+body {
+  background-color: antiquewhite;
+  padding: 0px;
+  margin: 0px; }
+
+.container {
+  width: 95%;
+  margin: auto; }
+
+.row1, .row2 {
+  overflow: hidden; }
+
+.header {
+  background-color: #6b6a6a;
+  padding: 0px; }
+  .header h1 {
+    font-size: 20px;
+    color: black;
+    padding: 0px; }
+
+.row2 .search {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: black; }
+
+.products {
+  background-color: red; }
+  .products .product-item {
+    background-color: royalblue;
+    display: flex;
+    flex-wrap: wrap; }
+    .products .product-item .items {
+      width: 25%;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid white; }
+      .products .product-item .items img {
+        display: block;
+        max-width: 100%; }
+
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: monospace; }
+
+/*# sourceMappingURL=style.css.map */
