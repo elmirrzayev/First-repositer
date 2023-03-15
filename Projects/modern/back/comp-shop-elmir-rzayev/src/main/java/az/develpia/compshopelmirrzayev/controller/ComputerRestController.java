@@ -46,8 +46,8 @@ public class ComputerRestController {
 	}
 	
 	@GetMapping
-	public List<ComputerModel> findAllbyId(ComputerModel computer){
-		return computerRepository.findAllbyId(computer.getId());
+	public Optional<ComputerModel> findAllbyId(ComputerModel computer){
+		return computerRepository.findById(computer.getId());
 	}
 	@GetMapping(path = "/all")
 	public List<ComputerModel> findAll(){

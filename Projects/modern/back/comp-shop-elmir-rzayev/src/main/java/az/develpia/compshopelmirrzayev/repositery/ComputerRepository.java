@@ -11,7 +11,7 @@ import az.develpia.compshopelmirrzayev.model.User;
 
 public interface ComputerRepository extends JpaRepository<ComputerModel, Integer>{
 
-	public List<ComputerModel> findAllbyId(Integer id);
+//	public ComputerModel findById(Integer id);
 	
 
 }
