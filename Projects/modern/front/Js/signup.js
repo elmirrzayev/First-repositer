@@ -1,39 +1,65 @@
 var API_URL = "http://localhost:9779";
-var userNameInput = document.getElementById('username').value;
-var userPasswordInput = document.getElementById('password').value;
-var userPhoneInput = document.getElementById('phone').value;
-var NameInput = document.getElementById('name').value;
+
 function onSignup(event) {
+    var userNameInput = document.getElementById('username').value;
+    var userPasswordInput = document.getElementById('password').value;
+    var userPhoneInput = document.getElementById('phone').value;
+    var NameInput = document.getElementById('name').value;
     event.preventDefault();
-    var username = userNameInput;
-    var password = userPasswordInput;
-    var phone = userPhoneInput;
-    var name = NameInput;
+    var uname = userNameInput;
+    var pass = userPasswordInput;
+    var phoneNumber = userPhoneInput;
+    var fullName = NameInput;
 
-    var http = XMLHttpRequest();
-    http.onload = function () {
-        var response = this.responseText;
-        var user = JSON.parse(response);
-        if (user.username == "") {
-            alert("bu istifadeci artiq movcuddur")
-        } else {
-            alert("Success");
-            window.location.assign("login.html");
-        }
-    }
+    // http.onload = function () {
+    //     var response = this.responseText;
+    //     var user = JSON.parse(response);
+    //     if (user.username == "") {
+    //         alert("bu istifadeci artiq movcuddur")
+    //     } else {
+    //         alert("Success");
+    //         window.location.assign("login.html");
+    //     }
+    // }
 
-    var userObject = {};
-    userObject.username = username;
-    userObject.password = password;
-    userObject.phone = phone;
-    userObject.name = name;
-    http.open("POST", API_URL + "/users", true);
-    http.setRequestHeader("Content-Type", "application/json");
-    http.send(JSON.stringify(userObject));
+    var userObject = {
+        username: uname,
+        password: pass,
+        phone: phoneNumber,
+        name: fullName
+    };
+    postResponse(JSON.stringify(userObject));
 }
+
+
+function afterCreateUser(user) {
+    console.log("User created: " + user);
+}
+
+
+async function postResponse(user) {
+    const response = fetch(
+        API_URL + '/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }
+    );
+    await (await response).text().then(
+        createdUser => {
+            afterCreateUser(createdUser)
+        }
+    )
+}
+
+
+
+
 function onLogIn() {
     window.location.href = 'login.html';
 }
-function onBackToMain(){
-window.location.assign("home.html");
+function onBackToMain() {
+    window.location.assign("home.html");
 }

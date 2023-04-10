@@ -35,8 +35,7 @@ public class UserRestController {
 			return u;
 		}else {
 		user.setPassword("{noop}"+user.getPassword());
-		user.setEnabled(true);
-		
+
 		User savedUser = userRepository.save(user);
 		
 		AuthorityModel authority = new AuthorityModel();
