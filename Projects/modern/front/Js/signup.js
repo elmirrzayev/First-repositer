@@ -1,6 +1,6 @@
 var API_URL = "http://localhost:9779";
 
-function onSignup(event) {
+function onCreateAccount(event) {
     var userNameInput = document.getElementById('username').value;
     var userPasswordInput = document.getElementById('password').value;
     var userPhoneInput = document.getElementById('phone').value;
@@ -28,12 +28,17 @@ function onSignup(event) {
         phone: phoneNumber,
         name: fullName
     };
-    postResponse(JSON.stringify(userObject));
+    if (userNameInput != "" && userPasswordInput != "" && userPhoneInput != "" && NameInput != "")
+        postResponse(JSON.stringify(userObject));
+        else{
+            alert('Fill the blanks!')
+        }
 }
 
 
 function afterCreateUser(user) {
     console.log("User created: " + user);
+    location.href = 'login.html';
 }
 
 

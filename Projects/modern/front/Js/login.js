@@ -1,26 +1,58 @@
 var API_URL = "http://localhost:9779";
-var userNameInput = document.getElementById('username').value;
-var userPasswordInput = document.getElementById('password').value;
-function onLogin(event){
-    event.preventDefault();
-    var username = userNameInput;
-    var password = userPasswordInput;
 
-    var http = XMLHttpRequest();
-    http.onload=function(){
-        if(this.status==200){
-            localStorage.setItem('username',username);
-            localStorage.setItem('password',password);
-            window.location.href ="home.html";
-        }else{
-            alert("Melumatlar yanlisdir!")
-        }
+function onLogin(event) {
+    var userNameInput = document.getElementById('username').value;
+    var userPasswordInput = document.getElementById('password').value;
+    event.preventDefault();
+    var uname = userNameInput;
+    var pass = userPasswordInput;
+    if (username == "" || password == "") {
+        alert("Fill the blanks!")
     }
-    http.open("GET",API_URL+"/users/login",true);
-    http.setRequestHeader("Authorization","Basic"+window.btoa(username+":"+password));
-    http.send();
+    else {
+        var userObject = {
+            username: uname,
+            password: pass,
+            phone: null,
+            name: null
+        };
+        console.log(JSON.stringify(userObject));
+        postResponse(JSON.stringify(userObject));
+    }
+
+    // localStorage.setItem('username', username);
+    // localStorage.setItem('password', password);
+    // window.location.href = "home.html";
+
 }
 
-function onMain(){
+
+function afterCreateUser(user) {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+    window.location.href = "home.html";
+}
+
+
+
+async function postResponse(user) {
+    const response = fetch(
+        API_URL + '/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }
+    );
+    await (await response).text().then(
+        user => {
+            afterCreateUser(user)
+        }
+    )
+}
+
+
+function onMain() {
     window.location.assign("home.html");
 }

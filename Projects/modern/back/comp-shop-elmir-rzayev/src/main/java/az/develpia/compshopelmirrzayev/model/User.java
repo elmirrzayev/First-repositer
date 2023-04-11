@@ -37,6 +37,7 @@ public class User {
 	public User(String jsonString) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
+			System.out.println("json: " + jsonString);
 			User user = mapper.readValue(jsonString, User.class);
 			this.username = user.getUsername();
 			this.password = user.getPassword();

@@ -6,5 +6,5 @@ import az.develpia.compshopelmirrzayev.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	public User findByUsername(String username);
+	public User findUserByUsernameAndPassword(String username,String password);
 }

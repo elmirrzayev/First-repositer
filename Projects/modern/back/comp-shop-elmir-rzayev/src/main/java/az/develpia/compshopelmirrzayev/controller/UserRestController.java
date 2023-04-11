@@ -4,10 +4,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import az.develpia.compshopelmirrzayev.model.AuthorityModel;
@@ -15,18 +13,19 @@ import az.develpia.compshopelmirrzayev.model.User;
 import az.develpia.compshopelmirrzayev.repositery.AuthorityRepository;
 import az.develpia.compshopelmirrzayev.repositery.UserRepository;
 
+
 @RestController
-@RequestMapping(path = "/users")
-@CrossOrigin(origins="*")
+
+
 public class UserRestController {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private AuthorityRepository authorityRepository;
-	
-	@PostMapping
+	@CrossOrigin
+	@PostMapping( "/users")
 	public User addUser(@RequestBody User user) {
 		Optional<User> userOptional = userRepository.findById(user.getId());
 		if(userOptional.isPresent()) {
@@ -37,17 +36,21 @@ public class UserRestController {
 		user.setPassword("{noop}"+user.getPassword());
 
 		User savedUser = userRepository.save(user);
-		
+
 		AuthorityModel authority = new AuthorityModel();
 		authority.setUsername(user.getUsername());
 		authority.setAuthority("seller");
 		authorityRepository.save(authority);
-		
+
 		return savedUser;
 		}
 	}
-	@GetMapping(path = "/login")
-	public void login() {
-		
+	@CrossOrigin()
+	@PostMapping("/login")
+	public User login(@RequestBody User user) {
+		User user1 = userRepository.findUserByUsernameAndPassword(user.getUsername(),"{noop}"+user.getPassword());
+		System.out.println(user1);
+
+		return user1;
 	}
 }
